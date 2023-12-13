@@ -14,7 +14,7 @@
 
     <div class="main__block">
 
-        <div class="article__date">
+        <div class="article__date"> <!-- TODO: Make category with the articles posted in that day -->
             <a th:text="${date}" href="#">12.12.2023</a>
         </div>
 
@@ -30,57 +30,38 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. In ducimus a rem eveniet autem dolores animi eaque nihil voluptatum quidem fugit hic dolorem obcaecati temporibus nulla vel accusamus, harum molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque reiciendis fugit, et, repellendus dolorem, voluptatum, nam aperiam cum soluta rem odio est laudantium deleniti incidunt temporibus voluptate aliquam sit. Accusamus iusto dolorem asperiores alias harum beatae voluptate amet eius doloremque velit distinctio veniam impedit cum fuga, cupiditate doloribus reprehenderit nam aut aliquam. Fugit explicabo nisi impedit nulla deserunt veritatis, eius.
         </div>
 
-        <div th:each="image : ${images}" class="images">
+        <div th:if="${!images.empty}" th:each="image : ${images}" class="images">
             <div class="article__image">
                 <img th:src="@{${image.url}}" th:alt="${image.alt}">
             </div>
         </div>
 
-        <form action="#" method="post">
+        <form th:action="@{/article/comment-} + ${id}" method="post">
             <div class="comment">
-                <textarea name="comment" id="comment" rows="8" placeholder="Comment this article"></textarea>
+                <textarea name="content" id="comment" rows="8" placeholder="Comment this article"></textarea>
             </div>
+            <button type="submit">Comment</button>
         </form>
 
-        <div class="user__comments">
+        <div th:if="${!comments.empty}" th:each="comment : ${comments}" class="user__comments">
             <div class="comment__card">
                 <div class="card__left">
                     <div class="user__avatar">
                         <a href="#">
-                            <img src="/image/userAvatar.jpeg" alt="profile picture">
+                            <img th:src="@{/image/user_picture.jpeg}" alt="User's prof. picture">
                         </a>
                     </div>
                 </div>
                 <div class="card__right">
                     <div class="card__username">
-                        <a href="#">
+                        <a th:text="${comment.author}" href="#">
                             TF U MEAN 'NUH UH'?
                         </a>
                     </div>
-                    <div class="card__comment">
+                    <div th:text="${comment.content}" class="card__comment">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate praesentium vitae fugiat ullam corporis tempore architecto saepe delectus eum iusto nisi hic suscipit?
                     </div>
-                    <div class="card__date">18.12.2023</div>
-                </div>
-            </div>
-            <div class="comment__card">
-                <div class="card__left">
-                    <div class="user__avatar">
-                        <a href="#">
-                            <img src="/image/userAvatar.jpeg" alt="profile picture">
-                        </a>
-                    </div>
-                </div>
-                <div class="card__right">
-                    <div class="card__username">
-                        <a href="#">
-                            TF U MEAN 'NUH UH'?
-                        </a>
-                    </div>
-                    <div class="card__comment">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate praesentium vitae fugiat ullam corporis tempore architecto saepe delectus eum iusto nisi hic suscipit?
-                    </div>
-                    <div class="card__date">18.12.2023</div>
+                    <div th:text="${comment.date}" class="card__date">18.12.2023</div>
                 </div>
             </div>
         </div>

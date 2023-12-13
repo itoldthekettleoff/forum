@@ -370,7 +370,7 @@ table td {
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin: 32px 0;
 }
 

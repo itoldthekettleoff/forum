@@ -20,14 +20,14 @@ public class ArticlePageController {
     public String articlePage(Model model, @PathVariable("id") Long id) {
         if (articleService.findById(id).isPresent()) {
             Article article = articleService.findById(id).get();
-            model.addAttribute("date", "12.12.2023"); // article.getDate()
-
+            model.addAttribute("id", id);
+            model.addAttribute("date", article.getDate());
             model.addAttribute("title", article.getTitle());
             model.addAttribute("author", article.getAuthor());
-            model.addAttribute("text", article.getText());
+            model.addAttribute("text", article.getContent());
 
             model.addAttribute("images", new ArrayList<String>()); // article.getImages() -> List<String> with image URLs
-            model.addAttribute("comments", new ArrayList<String>()); // article.getComments() -> List<Comments>
+            model.addAttribute("comments", article.getComments());
             return "article-page";
         } else
             return "not-found";

@@ -2,15 +2,22 @@ package com.rathercruel.forum.models;
 
 import jakarta.persistence.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table(name = "articles")
 public class Article {
     private String title;
     private String author;
-    private String text;
-//    private String lastActivity;
-//    private int views;
-//    private List<User> userList;
+    private String content;
+    private int views;
+
+    private String date;
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
 //    @OneToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "tags_fk", referencedColumnName = "id")
@@ -27,10 +34,13 @@ public class Article {
     public Article() {
     }
 
-    public Article(String title, String author, String text) {
+    public Article(String title, String author, String content) {
         this.title = title;
         this.author = author;
-        this.text = text;
+        this.content = content;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        date = sdf.format(new Date());
     }
 
     public String getTitle() {
@@ -49,12 +59,36 @@ public class Article {
         this.author = author;
     }
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public Long getId() {
