@@ -1,0 +1,23 @@
+<div th:fragment="navbar" class="navbar">
+    <div class="navbar__left">
+        <a th:classappend="${#strings.equals(current_page, 'Categories') ? 'active' :''}"
+           href="/categories" class="navbar__link">Categories</a>
+
+        <a th:classappend="${#strings.equals(current_page, 'Latest') ? 'active' :''}"
+           href="/latest" class="navbar__link">Latest</a>
+
+        <a th:classappend="${#strings.equals(current_page, 'New') ? 'active' :''}"
+           href="/new" class="navbar__link">New (11)</a>
+
+        <a th:classappend="${#strings.equals(current_page, 'Unread') ? 'active' :''}"
+           href="/unread" class="navbar__link">Unread</a>
+
+        <a th:classappend="${#strings.equals(current_page, 'Top') ? 'active' :''}"
+           href="/top" class="navbar__link">Top</a>
+    </div>
+    <div class="navbar__right">
+        <form action="" class="navbar__form">
+            <button>New Topic</button>
+        </form>
+    </div>
+</div>

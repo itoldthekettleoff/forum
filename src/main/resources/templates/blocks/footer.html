@@ -1,0 +1,19 @@
+<footer th:fragment="footer" class="footer" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="footer__inner">
+            <div class="footer__title">
+                FacePunch
+            </div>
+            <div sec:authentication="principal.username" class="footer__title"></div>
+            <div class="footer__desc">
+                <div class="footer__links">
+                    <a href="#">Visit me on GitHub</a>
+                    <a href="#">Source Code</a>
+                </div>
+                <div class="footer__p">
+                    This site is a similar copy of dead FacePunch forum
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

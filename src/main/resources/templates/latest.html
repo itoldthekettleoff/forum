@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forum - Latest</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/logo.png}">
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="~{blocks/header :: header}"/>
+        <div th:replace="~{blocks/navbar :: navbar}"/>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <span>Topic</span>
+                    </th>
+                    <th>
+                        <span>Users</span>
+                    </th>
+                    <th>
+                        <span>Views</span>
+                    </th>
+                    <th>
+                        <span>Last Activity</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody th:each="article : ${articles}">
+                <tr>
+                    <td>
+                        <div class="table__td">
+                            <a th:href="@{'/article/' + ${article.id}}" class="table__title" th:text="${article.title}"></a>
+                            <div class="table__tags">
+                                <a href="#" class="table__tag">Ukraine</a>
+                                <a href="#" class="table__tag">Europe</a>
+                                <a href="#" class="table__tag">European Union</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="table__avatars">
+                            <img alt="profile" width="24" height="24"
+                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
+                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+
+                            <img alt="profile" width="24" height="24"
+                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
+                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+
+                            <img alt="profile" width="24" height="24"
+                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
+                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+
+                            <img alt="profile" width="24" height="24"
+                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
+                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                        </div>
+                    </td>
+                    <td>5.4K</td>
+                    <td>04.11.2023</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="table__pagination">
+            <button>Prev page</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Next page</button>
+        </div>
+    </div>
+    <div th:replace="~{blocks/footer :: footer}"/>
+</body>
+</html>
