@@ -1,0 +1,55 @@
+.comment__card {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    margin: 32px 0;
+}
+
+.comment__card a {
+    color: #000;
+    transition: .2s ease;
+}
+
+.comment__card a:hover {
+    color: #ec1c24;
+}
+
+.user__avatar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.user__avatar a img {
+    min-width: 100%;
+    min-height: auto;
+    object-fit: cover;
+}
+
+.card__left {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.card__username,
+.card__comment,
+.card__date {
+    font-size: 15px;
+}
+
+.card__comment {
+    font-size: 18px;
+    margin: 7px 0;
+}

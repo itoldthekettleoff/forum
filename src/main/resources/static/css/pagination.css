@@ -1,0 +1,19 @@
+.table__pagination {
+    text-align: center;
+    color: #fff;
+}
+
+.table__pagination button {
+    background-color: rgba(23, 25, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin: 0 0 14px;
+    border: 1px solid #2527398c;
+    transition: 0.2s ease;
+}
+
+.table__pagination button:hover {
+    background-color: #fff;
+    color: #171928;
+}

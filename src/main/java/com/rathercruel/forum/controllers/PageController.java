@@ -23,6 +23,6 @@ public class PageController {
     public String latest(Model model) {
         model.addAttribute("current_page", "Latest");
         model.addAttribute("articles", articleService.findAll());
-        return "latest";
+        return "index";
     }
 }

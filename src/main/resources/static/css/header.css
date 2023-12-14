@@ -1,0 +1,22 @@
+header {
+    margin-top: 160px;
+    margin-bottom: 14px;
+}
+
+.header__left {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    max-width: 200px;
+}
+
+.header__logo a img {
+    width: 100%;
+}
