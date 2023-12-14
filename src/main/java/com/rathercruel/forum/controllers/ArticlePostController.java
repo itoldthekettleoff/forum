@@ -6,6 +6,7 @@ import com.rathercruel.forum.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,11 @@ public class ArticlePostController {
     private ArticleService articleService;
 
     @GetMapping("/article/post")
-    public String postArticlePage() {
+    public String postArticlePage(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userURL = "/user/" + user.getUsername();
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("user_url", userURL);
         return "article-post";
     }
 

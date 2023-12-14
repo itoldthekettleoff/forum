@@ -11,6 +11,8 @@ import java.util.List;
 public class Article {
     private String title;
     private String author;
+
+    @Column(columnDefinition = "LONGTEXT")
     private String content;
     private int views;
 

@@ -295,6 +295,11 @@ table td {
     background-color: #fff;
 }
 
+.page__title {
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
 .article__date {
     font-size: 12px;
     padding: 5px 0;
@@ -370,7 +375,6 @@ table td {
     display: -ms-flex;
     display: -o-flex;
     display: flex;
-    justify-content: flex-start;
     margin: 32px 0;
 }
 
@@ -417,7 +421,74 @@ table td {
 }
 
 .card__comment {
+    font-size: 18px;
     margin: 7px 0;
+}
+
+/* POST ARTICLE */
+
+.post__article {
+    width: 100%;
+}
+
+.post__user {
+    margin-bottom: 16px;
+}
+
+.post__user a {
+    color: #000;
+}
+
+.post__user a:hover {
+    transition: .2s ease;
+    color: #ec1c24;
+}
+
+.post__title,
+.post__content,
+.post__image {
+    width: 100%;
+}
+
+.post__title input,
+.post__title input:active,
+.post__title input:focus {
+  outline: 0;
+  width: 100%;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid black;
+  font-family: 'Roboto Condensed', sans-serif;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.post__content {
+  margin: 20px 0;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.post__image label,
+#public__article {
+  padding: 5px 16px;
+  height: 40px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid black;
+  margin-right: 16px;
+  transition: background-color 200ms;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.post__image label:hover,
+#public__article:hover {
+    background-color: rgba(0, 0, 0, 0.09);
 }
 
 /* FOOTER SECTION */

@@ -13,19 +13,25 @@
     <div th:replace="~{blocks/header :: header}"/>
     <div th:replace="~{blocks/navbar :: navbar}"/>
 
-    <form th:action="@{/article/post}" method="post">
-        <input type="text" name="title">
-        <input type="text" name="text">
-        <button type="submit">Publish</button>
-    </form>
-
-    <div class="table__pagination">
-        <button>Prev page</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>Next page</button>
+    <div class="main__block">
+        <section class="post__article">
+            <form th:action="@{/article/post}" method="post">
+                <div class="post__user">
+                    <a th:href="@{${user_url}}" th:text="'Posting as ' + ${username}">Posting as {USERNAME}</a>
+                </div>
+                <div class="post__title">
+                    <p>Title</p>
+                    <input type="text" name="title">
+                </div>
+                <div class="post__content">
+                    <p>Content</p>
+                    <textarea name="text" id="post__content" cols="30" rows="10"></textarea>
+                </div>
+                <button id="public__article" type="submit">Public</button>
+            </form>
+        </section>
     </div>
+
 </div>
 <div th:replace="~{blocks/footer :: footer}"/>
 </body>
