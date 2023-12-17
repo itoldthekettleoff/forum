@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/pagination.css}">
 
     <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="shortcut icon" type="x-icon" th:href="@{/image/logo.png}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
     <div class="main__block">
 
         <div class="article__date"> <!-- TODO: Make category with the articles posted in that day -->
-            <a th:text="${date}" href="#">12.12.2023</a>
+            <a th:text="${date}" th:href="@{'/articles/' + ${date_formatted}}">12.12.2023</a>
         </div>
 
         <div class="page__title">

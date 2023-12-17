@@ -31,21 +31,28 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        String[] staticResources = {
+                "/css/**",
+                "/image/**",
+                "/scripts/**",
+        };
         return http
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/registration").permitAll();
                     auth.requestMatchers("/registration?error").permitAll();
                     auth.requestMatchers("/login").permitAll();
-                    auth.requestMatchers("/logout").permitAll();
+                    auth.requestMatchers(staticResources).permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(formLogin -> {
                     formLogin.loginPage("/login");
+                    formLogin.defaultSuccessUrl("/latest");
                     formLogin.failureUrl("/login?error");
                 })
                 .logout(logout -> {
-                    logout.logoutSuccessUrl("/login").permitAll();
+                    logout.logoutUrl("/logout");
+                    logout.logoutSuccessUrl("/login?logout").permitAll();
                 })
                 .httpBasic(Customizer.withDefaults())
                 .build();

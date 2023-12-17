@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Forum - Public Article</title>
@@ -12,9 +11,8 @@
     <link rel="stylesheet" th:href="@{/css/post-article.css}">
 
     <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="shortcut icon" type="x-icon" th:href="@{/image/logo.png}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
-
 <body>
 <div class="container">
     <div th:replace="~{blocks/header :: header}"/>
@@ -28,7 +26,7 @@
                 </div>
                 <div class="post__title">
                     <p>Title</p>
-                    <input type="text" name="title">
+                    <input type="text" name="title" maxlength="255"> <!-- CHANGE MAXLENGTH TO JQUERRY SCRIPT -->
                 </div>
                 <div class="post__content">
                     <p>Content</p>

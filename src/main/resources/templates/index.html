@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Forum - Latest</title>
@@ -13,9 +12,8 @@
     <link rel="stylesheet" th:href="@{/css/pagination.css}">
 
     <link rel="stylesheet" th:href="@{/css/footer.css}">
-    <link rel="shortcut icon" type="x-icon" th:href="@{/image/logo.png}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
-
 <body>
     <div class="container">
         <div th:replace="~{blocks/header :: header}"/>
@@ -53,20 +51,20 @@
                     <td>
                         <div class="table__avatars">
                             <img alt="profile" width="24" height="24"
-                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
-                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
+                                 tabindex="-1" class="avatar">
 
                             <img alt="profile" width="24" height="24"
-                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
-                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
+                                 tabindex="-1" class="avatar">
 
                             <img alt="profile" width="24" height="24"
-                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
-                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
+                                 tabindex="-1" class="avatar">
 
                             <img alt="profile" width="24" height="24"
-                                 src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/24/162855_2.png"
-                                 title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
+                                 tabindex="-1" class="avatar">
                         </div>
                     </td>
                     <td>5.4K</td>

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AuthorizatonController {
+public class AuthorizationController {
 
     @Autowired
     private AuthenticationService authenticationService;
@@ -39,7 +39,7 @@ public class AuthorizatonController {
             return "redirect:/registration?error";
         else {
             authenticationService.registerUser(username, email, password);
-            return "redirect:/login!";
+            return "redirect:/login";
         }
     }
 }

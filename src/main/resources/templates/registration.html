@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Forum - Registration</title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
 <body>
-<h1>Registration Form</h1>
-    <form th:action="@{/registration}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+<div class="container">
+    <div class="login__block">
+        <div class="login__title">Forum</div>
+        <div class="login__or"><a th:href="@{/login}">Login</a> or <a th:href="@{/registration}">register</a></div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <div id="error-message" th:if="${param.error}">
+            <p>Such user already exists!</p>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <form th:action="@{/registration}" method="post">
 
-        <button type="submit">Register</button>
-    </form>
+            <div class="login__username">
+                <div class="user-field">Username</div>
+                <input type="text" id="username" name="username" required placeholder="Skriv her :)">
+            </div>
+
+            <div class="login__email">
+                <div class="user-field">E-mail</div>
+                <input type="email" id="email" name="email" required placeholder="your email is...">
+            </div>
+
+            <div class="login__password">
+                <div class="user-field">Password</div>
+                <input type="password" id="password" name="password" required placeholder="'n' here as well">
+            </div>
+
+            <button id="login-btn" type="submit">Register</button>
+            <div class="login__links">
+                <div class="links__item">
+                    <a href="github.com" target="_blank">GitHub repo</a>
+                </div>
+                <div class="links__item">
+                    <a href="github.com" target="_blank">Discord server</a>
+                </div>
+                <div class="links__item">
+                    <a href="github.com" target="_blank">Contact me</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
 </body>
 </html>

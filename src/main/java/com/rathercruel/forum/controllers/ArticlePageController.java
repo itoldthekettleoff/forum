@@ -20,8 +20,10 @@ public class ArticlePageController {
     public String articlePage(Model model, @PathVariable("id") Long id) {
         if (articleService.findById(id).isPresent()) {
             Article article = articleService.findById(id).get();
+            String formattedDate = article.getDate().replace(".", "_");
             model.addAttribute("id", id);
             model.addAttribute("date", article.getDate());
+            model.addAttribute("date_formatted", formattedDate);
             model.addAttribute("title", article.getTitle());
             model.addAttribute("author", article.getAuthor());
             model.addAttribute("text", article.getContent());

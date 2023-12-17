@@ -1,23 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Forum - Login</title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
 <body>
-    <h1>Login Form</h1>
+<div class="container">
+    <div class="login__block">
+        <div class="login__title">Forum</div>
+        <div class="login__or"><a th:href="@{/login}">Login</a> or <a th:href="@{/registration}">register</a></div>
 
-    <form th:action="@{/login}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        <div id="error-message" th:if="${param.error}">
+            <p>Invalid username or password.</p>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <div id="logout-message" th:if="${param.logout}">
+            <p>You are logged out successfully!</p>
+        </div>
 
-        <button type="submit">Login</button>
-    </form>
+        <form th:action="@{/login}" method="post">
+            <div class="login__username">
+                <div class="user-field">Username</div>
+                <input type="text" id="username" name="username" required placeholder="Skriv her :)">
+            </div>
 
-    <p th:if="${param.error}" id="error-message" style="color: red;">Invalid username or password.</p>
-    <p th:if="${param.logout}" id="logout-message" style="color: black;">You have been logged out successfully!</p>
+            <div class="login__password">
+                <div class="user-field">Password</div>
+                <input type="password" id="password" name="password" required placeholder="'n' here as well">
+            </div>
+
+            <button id="login-btn" type="submit">Login</button>
+
+            <div class="forgot__password">
+                <a th:href="@{/login/help}">Forgot password or username?</a>
+            </div>
+            
+            <div class="login__links">
+                <div class="links__item">
+                    <a href="github.com" target="_blank">GitHub repo</a>
+                </div>
+                <div class="links__item">
+                    <a href="github.com" target="_blank">Discord server</a>
+                </div>
+                <div class="links__item">
+                    <a href="github.com" target="_blank">Contact me</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
 </body>
 </html>

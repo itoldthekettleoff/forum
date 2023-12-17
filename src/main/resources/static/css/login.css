@@ -1,0 +1,120 @@
+.login__block {
+    min-width: 520px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.login__block a {
+    color: #8CA0FF;
+}
+
+.login__block a:hover {
+    color: #ec1c24;
+}
+
+.user-field {
+    margin: 18px 0 8px 0;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+}
+
+.login__or {
+    text-align: center;
+}
+
+.login__title {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin: 16px auto;
+}
+
+#error-message,
+#logout-message {
+    width: 100%;
+    margin-top: 12px;
+    padding: 6px 0;
+}
+
+#error-message p,
+#logout-message p {
+    background: #ec1c24;
+    color: white;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+#logout-message p {
+    background: #4dbf17de;
+}
+
+#login-btn {
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid black;
+    padding: 6px 0;
+    transition: .2s ease;
+}
+
+#login-btn:hover {
+    background-color: #ec1c24;
+    color: #fff;
+    border: 1px solid #ec1c24;
+}
+
+.login__block form {
+    margin: 10px 0;
+}
+
+.login__username input,
+.login__password input,
+.login__email input {
+    outline: 0;
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid black;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.forgot__password {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+
+    padding-bottom: 12px;
+    border-bottom: 1px dotted grey;
+}
+
+.forgot__password a {
+    text-align: center;
+}
+
+.login__links {
+    padding-top: 12px;
+}
+
+.links__item {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    padding: 2px 0;
+}

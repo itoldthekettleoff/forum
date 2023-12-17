@@ -1,22 +1,31 @@
 <header th:fragment="header" class="header">
     <div class="header__left">
-        <div class="header__logo">
-            <a href="#" class="logo__link">
-                <img src="https://europe1.discourse-cdn.com/business20/uploads/facepunch1/original/2X/2/247ce2d604259e1d664d736f5aec099098a77581.png" alt="forum logo">
+        <div class="header__logo" style="display: flex">
+            <a th:href="@{/latest}" class="logo__link">
+                <img th:src="@{/image/logo.png}"
+                     alt="forum logo">
             </a>
         </div>
+        <form id="logout-form" th:action="@{/logout}" method="post">
+            <button type="submit">Sign me Out!</button>
+        </form>
         <div class="panel">
-            <button aria-expanded="false" aria-haspopup="true" href="/search" data-auto-route="true" title="Search" aria-label="Search" id="search-button" class="icon btn-flat">
+            <button aria-expanded="false" aria-haspopup="true" href="/search" data-auto-route="true" title="Search"
+                    aria-label="Search" id="search-button" class="icon btn-flat">
                 <img src="/image/search.png" alt="">
             </button>
 
-            <button aria-expanded="false" aria-haspopup="true" href="" data-auto-route="true" title="menu" aria-label="menu" id="toggle-hamburger-menu" class="icon btn-flat">
+            <button aria-expanded="false" aria-haspopup="true" href="" data-auto-route="true" title="menu"
+                    aria-label="menu" id="toggle-hamburger-menu" class="icon btn-flat">
                 <img src="/image/burger-bar.png" alt="">
             </button>
 
-            <button aria-haspopup="true" aria-expanded="false" href="/u/rathercruel" title="James" data-auto-route="true" class="icon btn-flat">
+            <button aria-haspopup="true" aria-expanded="false" href="/u/rathercruel" title="James"
+                    data-auto-route="true" class="icon btn-flat">
                 <div class="avatar__picture">
-                    <img alt="profile, messages, bookmarks and preferences" width="48" height="48" src="https://dub1.discourse-cdn.com/business20/user_avatar/forum.facepunch.com/rathercruel/48/162855_2.png" title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                    <img alt="profile" width="48" height="48"
+                         th:src="@{/image/user_picture.jpeg}"
+                         title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
                 </div>
             </button>
         </div>
