@@ -3,7 +3,10 @@ package com.rathercruel.forum.models;
 import jakarta.persistence.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +24,11 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+    private String date;
+    private String status;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserComment> comments;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -39,6 +47,10 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.status = "";
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        date = sdf.format(new Date());
     }
 
     public Long getId() {
@@ -102,5 +114,29 @@ public class User implements UserDetails {
 
     public void setAuthorities(Set<Role> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<UserComment> getUserComments() {
+        return comments;
+    }
+
+    public void setUserComments(List<UserComment> comments) {
+        this.comments = comments;
     }
 }

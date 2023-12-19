@@ -1,0 +1,57 @@
+.user__profile {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile__left {
+    max-width: 20%;
+    overflow: hidden;
+}
+
+.profile__left img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.profile__right {
+    margin-left: 24px;
+    width: 100%;
+}
+
+.profile__username {
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.profile__regdate {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.profile__status {
+    font-style: italic;
+}
+
+.user__articles {
+    margin: 14px 0;
+    border: 1px solid #393939;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table {
+    border-radius: 0px !important;
+    margin: 0 !important;
+}
+
+table thead tr {
+    background-color: #393939 !important;
+}
+
+table td {
+    max-width: 360px !important;
+}

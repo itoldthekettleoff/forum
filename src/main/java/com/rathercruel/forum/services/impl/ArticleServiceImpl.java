@@ -29,4 +29,14 @@ public class ArticleServiceImpl implements ArticleService {
     public Optional<Article> findById(Long id) {
         return articleRepository.findById(id);
     }
+
+    @Override
+    public List<Article> findAllByDate(String date) {
+        return articleRepository.findByDate(date);
+    }
+
+    @Override
+    public List<Article> findAllByAuthor(String author) {
+        return articleRepository.findAllByAuthor(author);
+    }
 }

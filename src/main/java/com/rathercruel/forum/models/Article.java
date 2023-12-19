@@ -15,22 +15,22 @@ public class Article {
     @Column(columnDefinition = "LONGTEXT")
     private String content;
     private int views;
-
     private String date;
 
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    private List<ArticleComment> articleComments;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "tags_fk", referencedColumnName = "id")
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "article_tags",
+//            joinColumns = @JoinColumn(name = "article_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id"))
 //    private List<Tag> tags;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @SequenceGenerator(
             name = "article_sequence",
-            sequenceName = "article_sequence"
-    )
+            sequenceName = "article_sequence")
     private Long id;
 
     public Article() {
@@ -77,12 +77,12 @@ public class Article {
         this.views = views;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public List<ArticleComment> getArticleComments() {
+        return articleComments;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setArticleComments(List<ArticleComment> articleComments) {
+        this.articleComments = articleComments;
     }
 
     public String getDate() {

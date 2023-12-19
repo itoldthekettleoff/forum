@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Forum - Post Article</title>
+    <title th:text="'Forum -' + ${title}">Forum - Article</title>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/header.css}">
@@ -55,14 +55,14 @@
             <div class="comment__card">
                 <div class="card__left">
                     <div class="user__avatar">
-                        <a href="#">
+                        <a th:href="'/user/' + ${comment.authorId}">
                             <img th:src="@{/image/user_picture.jpeg}" alt="User's prof. picture">
                         </a>
                     </div>
                 </div>
                 <div class="card__right">
                     <div class="card__username">
-                        <a th:text="${comment.author}" href="#">
+                        <a th:text="${comment.author}" th:href="'/user/' + ${comment.authorId}">
                             TF U MEAN 'NUH UH'?
                         </a>
                     </div>
@@ -82,7 +82,6 @@
         <button>3</button>
         <button>Next page</button>
     </div>
-
 </div>
 <div th:replace="~{blocks/footer :: footer}"/>
 

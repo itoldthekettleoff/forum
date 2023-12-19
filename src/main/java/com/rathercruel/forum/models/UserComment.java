@@ -6,39 +6,49 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "user_comments")
+public class UserComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "article_id", nullable = false)
-    private Article article;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     private String author;
+    private Long authorId;
     private String content;
     private String date;
 
-    public Comment() {
+    public UserComment() {
     }
 
-    public Comment(Article article, String content, String author) {
-        this.article = article;
+    public UserComment(User article, String content, String author, Long authorId) {
+        this.user = article;
         this.content = content;
         this.author = author;
+        this.authorId = authorId;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         date = sdf.format(new Date());
     }
 
-    public Article getArticle() {
-        return article;
+    public Long getId() {
+        return id;
     }
 
-    public void setArticle(Article article) {
-        this.article = article;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getContent() {
@@ -63,5 +73,13 @@ public class Comment {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Long getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 }

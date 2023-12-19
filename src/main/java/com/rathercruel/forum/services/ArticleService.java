@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface ArticleService {
     Article insert(Article article);
     List<Article> findAll();
+    List<Article> findAllByAuthor(String author);
     Optional<Article> findById(Long id);
+    List<Article> findAllByDate(String date);
 }
