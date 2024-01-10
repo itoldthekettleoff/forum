@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum - Rolf</title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/comments.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+    <link rel="stylesheet" th:href="@{/css/pagination.css}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
+</head>
+<body>
+    <div class="container">
+        <div th:replace="~{blocks/header :: header}"/>
+        <div th:replace="~{blocks/navbar :: navbar}"/>
+        <div class="main__block">
+           <div class="user__profile">
+                <div class="profile__left">
+                    <div class="user__picture">
+                        <img th:src="@{/image/user_picture.jpeg}" alt="user profile picture">
+                    </div>
+                    <div class="profile__regdate" th:text="'Exists since: ' + ${user_regdate}">Exists since: 01.01.2024</div>
+                </div>
+                <div class="profile__right">
+                    <div class="user__info">
+                        <div class="profile__username" th:text="${username}">Rolf</div>
+                        <div class="profile__status" th:text="${user_status}">Our lives are short, will you share yours with me?</div>
+                    </div>
+                    <div class="user__articles">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Topic</span>
+                                    </th>
+                                    <th>
+                                        <span>Users</span>
+                                    </th>
+                                    <th>
+                                        <span>Views</span>
+                                    </th>
+                                    <th>
+                                        <span>Activity</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody th:each="article : ${articles}">
+                                <tr>
+                                <td>
+                                    <div class="table__td">
+                                        <a th:href="@{'/article/' + ${article.id}}" class="table__title" th:text="${article.title}"></a>
+                                        <div class="table__tags">
+                                            <a th:each="tag : ${article.articleTags}"
+                                               th:href="@{'/articles/tag/' + ${tag.name}}"
+                                               th:text="${tag.name}" class="table__tag">Tag</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="table__avatars">
+                                        <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                                        <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                                        <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                                        <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                                    </div>
+                                </td>
+                                <td th:text="${article.views}">5.4K</td>
+                                <td th:text="${article.date}">04.11.2023</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+           </div>
+            <form th:action="@{'/user/comment-' + ${id}}" method="post">
+                <div class="comment">
+                    <textarea name="content" id="comment" rows="8" placeholder="Leave a comment here."></textarea>
+                </div>
+                <button type="submit">Comment</button>
+            </form>
+            <div th:if="${!comments.empty}" th:each="comment : ${comments}" class="user__comments">
+                <div class="comment__card">
+                    <div class="card__left">
+                        <div class="user__avatar">
+                            <a th:href="@{'/user/' + ${comment.author.id}}">
+                                <img th:src="@{/image/user_picture.jpeg}" alt="User's prof. picture">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card__right">
+                        <div class="card__username">
+                            <a th:text="${comment.author.username}" th:href="'/user/' + ${comment.author.id}">
+                                AUTHOR
+                            </a>
+                        </div>
+                        <div th:text="${comment.content}" class="card__comment">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate
+                            praesentium vitae fugiat ullam corporis tempore architecto saepe
+                            delectus eum iusto nisi hic suscipit?
+                        </div>
+                        <div th:text="${comment.date}" class="card__date">18.12.2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table__pagination">
+        <button>Prev page</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>Next page</button>
+    </div>
+    <div th:replace="~{blocks/footer :: footer}"/>
+</body>
+</html>

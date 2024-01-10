@@ -3,8 +3,8 @@ package com.rathercruel.forum.models;
 import jakarta.persistence.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +21,14 @@ public class User implements UserDetails {
     @Column(unique = true)
     private String email;
     private String password;
+    private String date;
+    private String status;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private List<Article> articles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserComment> comments;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -34,11 +42,16 @@ public class User implements UserDetails {
         this.authorities = new HashSet<Role>();
     }
 
-    public User(String username, String email, String password, Set<Role> authorities) {
+    public User(String username, String email, String password, Set<Role> authorities, List<Article> articles) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.status = "";
+        this.articles = articles;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        date = sdf.format(new Date());
     }
 
     public Long getId() {
@@ -102,5 +115,45 @@ public class User implements UserDetails {
 
     public void setAuthorities(Set<Role> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public List<UserComment> getUserComments() {
+        return comments;
+    }
+
+    public void setUserComments(List<UserComment> comments) {
+        this.comments = comments;
+    }
+
+    public List<UserComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<UserComment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

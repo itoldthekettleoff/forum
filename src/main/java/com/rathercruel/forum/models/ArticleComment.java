@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "article_comments")
+public class ArticleComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,20 +17,26 @@ public class Comment {
     @JoinColumn(name = "article_id", nullable = false)
     private Article article;
 
-    private String author;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
     private String content;
     private String date;
 
-    public Comment() {
+    public ArticleComment() {
     }
 
-    public Comment(Article article, String content, String author) {
+    public ArticleComment(Article article, String content, User author) {
         this.article = article;
         this.content = content;
         this.author = author;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         date = sdf.format(new Date());
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Article getArticle() {
@@ -49,11 +55,11 @@ public class Comment {
         this.content = content;
     }
 
-    public String getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(User author) {
         this.author = author;
     }
 

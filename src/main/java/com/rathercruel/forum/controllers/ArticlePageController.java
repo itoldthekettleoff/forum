@@ -29,7 +29,8 @@ public class ArticlePageController {
             model.addAttribute("text", article.getContent());
 
             model.addAttribute("images", new ArrayList<String>()); // article.getImages() -> List<String> with image URLs
-            model.addAttribute("comments", article.getComments());
+            model.addAttribute("comments", article.getArticleComments());
+            model.addAttribute("tags", article.getArticleTags());
             return "article-page";
         } else
             return "not-found";

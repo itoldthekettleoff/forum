@@ -25,12 +25,12 @@
         <form th:action="@{/login}" method="post">
             <div class="login__username">
                 <div class="user-field">Username</div>
-                <input type="text" id="username" name="username" required placeholder="Skriv her :)">
+                <input type="text" id="username" name="username" required maxlength="16" placeholder="Skriv her :)">
             </div>
 
             <div class="login__password">
                 <div class="user-field">Password</div>
-                <input type="password" id="password" name="password" required placeholder="'n' here as well">
+                <input type="password" id="password" name="password" required maxlength="255" placeholder="'n' here as well">
             </div>
 
             <button id="login-btn" type="submit">Login</button>
