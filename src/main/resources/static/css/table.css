@@ -20,7 +20,11 @@
 }
 
 .table__title {
-    display: block;
+    padding: 2px 0;
+}
+
+.table__title a,
+.table__author a{
     color: #000;
     text-align: left;
     text-overflow: ellipsis;
@@ -28,7 +32,12 @@
     overflow: hidden;
 }
 
-.table__title:hover {
+.table__author a {
+    font-size: 14px;
+}
+
+.table__title a:hover,
+.table__author a:hover {
     color: rgba(144, 175, 255, .9);
 }
 

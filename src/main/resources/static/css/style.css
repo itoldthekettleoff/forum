@@ -15,7 +15,78 @@ body {
     font-weight: 400;
 }
 
-/* MAIN SECTION */
+header {
+    margin-top: 160px;
+    margin-bottom: 14px;
+}
+
+.header__left {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    max-width: 200px;
+}
+
+.header__logo a img {
+    width: 100%;
+}
+
+.navbar {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(23, 25, 40, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+
+    align-items: center;
+    overflow: hidden;
+    max-height: 64px;
+}
+
+.navbar__left {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar__link {
+    display: block;
+    padding: 100% 16px;
+    /*    font-size: 14px;*/
+}
+
+.navbar__form button {
+    color: #fff;
+    transition: 0.2s ease;
+    padding: 100% 16px;
+    /*    font-size: 14px;*/
+}
+
+.navbar__link:hover,
+.navbar__form button:hover {
+    color: #171928;
+    background-color: #fff;
+}
+
+.avatar__picture img {
+    border-radius: 50px;
+}
+
 .main__block {
     margin: 14px auto;
     padding: 30px;
@@ -34,7 +105,18 @@ body {
 }
 
 .author {
+    max-width: fit-content;
+}
+
+.author a {
+    display: flex;
+    align-items: center;
     margin: 10px 0;
+}
+
+.author a img {
+    margin: 0 4px 0 0;
+    border-radius: 50px;
 }
 
 .author a,
@@ -49,6 +131,7 @@ body {
 }
 
 .text {
+    overflow-wrap: break-word;
     border-top: 1px solid grey;
     margin: 32px 0;
     padding: 32px 0 0 0;
@@ -89,4 +172,44 @@ body {
     border: 1px solid black;
     resize: none;
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+.footer {
+    padding: 28px 0;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(23, 25, 40, 0.6);
+    backdrop-filter: blur(10px);
+}
+
+.footer__title {
+    font-size: 28px;
+    padding: 12px 0;
+}
+
+
+.footer__links {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+}
+
+.footer__links a {
+    display: block;
+    padding: 6px 8px;
+    margin: 0px 5px 5px 5px;
+    border-radius: 4px;
+}
+
+.footer__links a:hover {
+    color: #171928;
+    background-color: #fff;
+}
+
+.footer__p {
+    padding: 5px 0px;
+    font-size: 14px;
 }

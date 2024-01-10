@@ -17,19 +17,20 @@ public class UserComment {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    private String author;
-    private Long authorId;
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
+
     private String content;
     private String date;
 
     public UserComment() {
     }
 
-    public UserComment(User article, String content, String author, Long authorId) {
-        this.user = article;
+    public UserComment(User user, String content, User author) {
+        this.user = user;
         this.content = content;
         this.author = author;
-        this.authorId = authorId;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         date = sdf.format(new Date());
@@ -59,14 +60,6 @@ public class UserComment {
         this.content = content;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getDate() {
         return date;
     }
@@ -75,11 +68,11 @@ public class UserComment {
         this.date = date;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

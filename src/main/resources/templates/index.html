@@ -5,13 +5,9 @@
     <title>Forum - Latest</title>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" th:href="@{/css/header.css}">
-    <link rel="stylesheet" th:href="@{/css/navbar.css}">
 
     <link rel="stylesheet" th:href="@{/css/table.css}">
     <link rel="stylesheet" th:href="@{/css/pagination.css}">
-
-    <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
 <body>
@@ -36,39 +32,33 @@
                     </th>
                 </tr>
             </thead>
-            <tbody th:each="article : ${articles}">
-                <tr>
+            <tbody>
+                <tr th:each="article : ${articles}">
                     <td>
                         <div class="table__td">
-                            <a th:href="@{'/article/' + ${article.id}}" class="table__title" th:text="${article.title}"></a>
+                            <div class="table__author">
+                                <a th:href="@{'/user/' + ${article.author.id}}" th:text="${article.author.username}"></a>
+                            </div>
+                            <div class="table__title">
+                                <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
+                            </div>
                             <div class="table__tags">
-                                <a href="#" class="table__tag">Ukraine</a>
-                                <a href="#" class="table__tag">Europe</a>
-                                <a href="#" class="table__tag">European Union</a>
+                                <a th:each="tag : ${article.articleTags}"
+                                   th:href="@{'/articles/tag/' + ${tag.name}}"
+                                   th:text="${tag.name}" class="table__tag">Tag</a>
                             </div>
                         </div>
                     </td>
                     <td>
                         <div class="table__avatars">
-                            <img alt="profile" width="24" height="24"
-                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
-                                 tabindex="-1" class="avatar">
-
-                            <img alt="profile" width="24" height="24"
-                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
-                                 tabindex="-1" class="avatar">
-
-                            <img alt="profile" width="24" height="24"
-                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
-                                 tabindex="-1" class="avatar">
-
-                            <img alt="profile" width="24" height="24"
-                                 th:src="@{/image/user_picture.jpeg}" title="James" aria-hidden="true" loading="lazy"
-                                 tabindex="-1" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
                         </div>
                     </td>
-                    <td>5.4K</td>
-                    <td>04.11.2023</td>
+                    <td th:text="${article.views}">5.4K</td>
+                    <td th:text="${article.date}">04.11.2023</td>
                 </tr>
             </tbody>
         </table>

@@ -1,6 +1,8 @@
 package com.rathercruel.forum.services.impl;
 
 import com.rathercruel.forum.models.Article;
+import com.rathercruel.forum.models.Tag;
+import com.rathercruel.forum.models.User;
 import com.rathercruel.forum.repositories.ArticleRepository;
 import com.rathercruel.forum.services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> findAllByAuthor(String author) {
+    public List<Article> findAllByAuthor(User author) {
         return articleRepository.findAllByAuthor(author);
+    }
+
+    @Override
+    public List<Article> findAllByTag(Tag tag) {
+//        return articleRepository.findAllByTag(tag);
+        return null;
     }
 }

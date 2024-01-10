@@ -53,3 +53,25 @@
     font-size: 18px;
     margin: 7px 0;
 }
+
+.tags__inner {
+    display: flex;
+}
+
+.tag:nth-child(1) {
+    margin: 6px 4px 0 0;
+}
+
+.tag {
+    margin: 6px 4px 0;
+    background-color: #ec1c24;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.tag:hover {
+    background-color: #d1171e;
+}

@@ -22,17 +22,17 @@
 
             <div class="login__username">
                 <div class="user-field">Username</div>
-                <input type="text" id="username" name="username" required placeholder="Skriv her :)">
+                <input type="text" id="username" name="username" required maxlength="16" placeholder="Username (max 16chars)">
             </div>
 
             <div class="login__email">
                 <div class="user-field">E-mail</div>
-                <input type="email" id="email" name="email" required placeholder="your email is...">
+                <input type="email" id="email" name="email" required maxlength="255" placeholder="your email is...">
             </div>
 
             <div class="login__password">
                 <div class="user-field">Password</div>
-                <input type="password" id="password" name="password" required placeholder="'n' here as well">
+                <input type="password" id="password" name="password" required maxlength="255" placeholder="Your password (max 16chars)">
             </div>
 
             <button id="login-btn" type="submit">Register</button>

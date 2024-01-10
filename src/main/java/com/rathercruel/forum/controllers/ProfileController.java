@@ -25,7 +25,7 @@ public class ProfileController {
         model.addAttribute("username", user.getUsername());
         model.addAttribute("user_status", user.getStatus());
         model.addAttribute("user_regdate", user.getDate());
-        model.addAttribute("articles", articleService.findAllByAuthor(username));
+        model.addAttribute("articles", articleService.findAllByAuthor(user));
         model.addAttribute("comments", user.getUserComments());
         return "profile";
     }

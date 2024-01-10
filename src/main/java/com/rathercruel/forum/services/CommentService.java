@@ -1,6 +1,5 @@
 package com.rathercruel.forum.services;
 
-import com.rathercruel.forum.models.ArticleComment;
 import org.springframework.stereotype.Service;
 
 @Service

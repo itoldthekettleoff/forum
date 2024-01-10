@@ -15,15 +15,16 @@
     color: #ec1c24;
 }
 
-.post__title,
-.post__content,
-.post__image {
+.w100p {
     width: 100%;
 }
 
 .post__title input,
 .post__title input:active,
-.post__title input:focus {
+.post__title input:focus,
+.post__tags input,
+.post__tags input :active,
+.post__tags input:focus {
   outline: 0;
   width: 100%;
   font-size: 16px;
@@ -32,8 +33,24 @@
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.post__content {
-  margin: 20px 0;
+.post__content,
+.post__tags {
+  margin: 20px 0 16px;
+}
+
+#tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 6px 0 12px 0;
+}
+
+.tag {
+    background-color: #ec1c24;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .post__image label,
@@ -43,7 +60,6 @@
   cursor: pointer;
   background-color: #fff;
   border: 1px solid black;
-  margin-right: 16px;
   transition: background-color 200ms;
   cursor: pointer;
   transition: .2s ease;

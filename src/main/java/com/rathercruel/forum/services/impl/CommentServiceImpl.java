@@ -29,13 +29,14 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void saveArticleComment(Long id, String content) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        articleCommentRepository.save(new ArticleComment(articleService.findById(id).get(), content, user.getUsername(), user.getId()));
+        User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        articleCommentRepository.save(new ArticleComment(articleService.findById(id).get(), content, author));
     }
 
     @Override
     public void saveUserComment(Long id, String content) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userCommentRepository.save(new UserComment(user, content, user.getUsername(), user.getId()));
+        User user = userService.findByUsername(userService.loadUserById(id).getUsername()).get();
+        User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userCommentRepository.save(new UserComment(user, content, author));
     }
 }
