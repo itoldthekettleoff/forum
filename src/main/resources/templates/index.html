@@ -6,6 +6,7 @@
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
+    <link rel="stylesheet" th:href="@{/css/post-article.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
     <link rel="stylesheet" th:href="@{/css/pagination.css}">
     <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
@@ -15,19 +16,21 @@
         <div th:replace="~{blocks/header :: header}"/>
         <div th:replace="~{blocks/navbar :: navbar}"/>
 
+        <div th:replace="~{blocks/post-article :: postForm}"/>
+
         <table class="table">
             <thead>
                 <tr>
                     <th>
                         <span>Topic</span>
                     </th>
-                    <th>
+                    <th th:if="!${articles.empty}">
                         <span>Users</span>
                     </th>
-                    <th>
+                    <th th:if="!${articles.empty}">
                         <span>Views</span>
                     </th>
-                    <th>
+                    <th th:if="!${articles.empty}">
                         <span>Last Activity</span>
                     </th>
                 </tr>
@@ -37,7 +40,7 @@
                     <td>
                         <div class="table__td">
                             <div class="table__author">
-                                <a th:href="@{'/user/' + ${article.author.id}}" th:text="${article.author.username}"></a>
+                                <a th:href="@{'/user/' + ${article.author.username}}" th:text="${article.author.nickname}"></a>
                             </div>
                             <div class="table__title">
                                 <a th:href="@{'/article/' + ${article.id}}" th:text="${article.title}"></a>
@@ -51,14 +54,23 @@
                     </td>
                     <td>
                         <div class="table__avatars">
-                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
-                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
-                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
-                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpg}" class="avatar">
+                            <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpg}" class="avatar">
                         </div>
                     </td>
                     <td th:text="${article.views}">5.4K</td>
                     <td th:text="${article.date}">04.11.2023</td>
+                </tr>
+                <tr th:if="${articles.empty}">
+                    <td>
+                        <p style="font-size: 24px;
+                            text-align: center; padding: 12px 0;
+                            background-color: #fff">
+                            Huh? No articles here?? You should write one!
+                        </p>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -72,5 +84,7 @@
         </div>
     </div>
     <div th:replace="~{blocks/footer :: footer}"/>
+    <script th:src="@{/scripts/showForm.js}"></script>
+    <script th:src="@{/scripts/showMenu.js}"></script>
 </body>
 </html>

@@ -16,31 +16,32 @@
     color: #ec1c24;
 }
 
-.user__avatar a {
+.card__left {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: flex-start;
+	margin-right: 16px;
+	max-height: 72px;
+	max-width: 72px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.card__left a {
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.user__avatar a img {
     min-width: 100%;
-    min-height: auto;
-    object-fit: cover;
+    min-height: 100%;
 }
 
-.card__left {
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
+.card__left a img {
+	min-width: 100%;
+    min-height: 100%;
+    flex-shrink: 1;
+    object-fit: cover;
 }
 
 .card__username,
@@ -70,6 +71,10 @@
     border-radius: 5px;
     cursor: pointer;
     transition: .2s ease;
+}
+
+.tag a {
+    color: #fff !important;
 }
 
 .tag:hover {

@@ -35,10 +35,10 @@ public class AuthorizationController {
     public String registerUser(@RequestParam(name = "username") String username,
                              @RequestParam(name = "email") String email,
                              @RequestParam(name = "password") String password) {
-        if (userService.isPresent(username))
+        if (userService.isPresent(username.toLowerCase()) || userService.isPresentEmail(email.toLowerCase()))
             return "redirect:/registration?error";
         else {
-            authenticationService.registerUser(username, email, password);
+            authenticationService.registerUser(username.toLowerCase(), email.toLowerCase(), password);
             return "redirect:/login";
         }
     }

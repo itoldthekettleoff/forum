@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Forum - Public Article</title>
+    <title>Forum - Write an Article</title>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/post-article.css}">
@@ -19,19 +19,19 @@
                 <div class="post__user">
                     <a th:href="@{${user_url}}" th:text="'Posting as ' + ${username}">Posting as USERNAME</a>
                 </div>
-                <div class="post__title w100p">
+                <div class="post__title default-input w100p">
                     <p>Title (max 255 chars)</p>
                     <input name="title" type="text" id="inputField" maxlength="255" required>
                 </div>
-                <div class="post__content w100p">
+                <div class="post__content default-input w100p">
                     <p>Content</p>
-                    <textarea name="text" id="post__content" cols="30" rows="10" required></textarea>
+                    <textarea name="text" id="text-area" cols="30" rows="10" required></textarea>
                 </div>
-                <div class="post__image w100p">
+                <div class="post__image default-input w100p">
                     <label for="images">Upload your images</label>
                     <input type="file" id="images" name="image" disabled>
                 </div>
-                <div class="post__tags w100p">
+                <div class="post__tags default-input w100p">
 <!--                    <p>Tags (add by clicking <b>space</b>)</p>-->
                     <p>Tags (separate the tags with <b>,</b>)</p>
                     <div class="tags__inner">
@@ -46,6 +46,7 @@
     </div>
 </div>
 <div th:replace="~{blocks/footer :: footer}"/>
-<!--<script th:src="@{/scripts/tags.js}"></script>-->
+<script th:src="@{/scripts/showForm.js}"></script>
+<script th:src="@{/scripts/showMenu.js}"></script>
 </body>
 </html>

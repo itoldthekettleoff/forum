@@ -23,6 +23,7 @@ public class User implements UserDetails {
     private String password;
     private String date;
     private String status;
+    private String nickname;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Article> articles;
@@ -47,8 +48,9 @@ public class User implements UserDetails {
         this.email = email;
         this.password = password;
         this.authorities = authorities;
-        this.status = "";
+        this.status = "Hey ^_~";
         this.articles = articles;
+        this.nickname = username;
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         date = sdf.format(new Date());
@@ -155,5 +157,29 @@ public class User implements UserDetails {
 
     public void setArticles(List<Article> articles) {
         this.articles = articles;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", date='" + date + '\'' +
+                ", status='" + status + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", articles=" + articles +
+                ", comments=" + comments +
+                ", authorities=" + authorities +
+                '}';
     }
 }

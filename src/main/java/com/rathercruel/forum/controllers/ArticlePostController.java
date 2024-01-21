@@ -40,15 +40,25 @@ public class ArticlePostController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Set<Tag> articleTags = new HashSet<>();
         if (tags != null) {
+            tags = tags.toLowerCase();
+            tags = tags.replace('?', '\0');
+            tags = tags.replace('!', '\0');
+            tags = tags.replace('&', '\0');
+            tags = tags.replace('*', '\0');
+            tags = tags.replace('"', '\0');
+            tags = tags.replace('/', '\0');
+            tags = tags.replace('\'', '\0');
+            tags = tags.replace('\\', '\0');
             String[] tagList = tags.split(",");
             for (String tag : tagList) {
                 if (tag.isBlank())
                     continue;
-                if (tagService.findByName(tag.trim()).isPresent()) {
-                    articleTags.add(tagService.findByName(tag.trim()).get());
+                tag = tag.trim();
+                tag = tag.replace(' ', '-');
+                if (tagService.findByName(tag).isPresent()) {
+                    articleTags.add(tagService.findByName(tag).get());
                 } else {
-                    tagService.insert(new Tag(tag.trim()));
-                    articleTags.add(new Tag(tag.trim()));
+                    articleTags.add(tagService.insert(new Tag(tag)));
                 }
             }
         }

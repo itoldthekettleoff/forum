@@ -1,0 +1,99 @@
+<div th:fragment="article-comments" th:each="comment : ${article.articleComments}" class="user__comments">
+    <div class="comment__card" style="display:flex; justify-content: space-between">
+        <div style="display:flex;">
+            <div class="card__left">
+                <a th:href="@{'/user/' + ${comment.author.username}}">
+                    <img th:src="@{/image/user_picture.jpg}" alt="User's prof. picture">
+                </a>
+            </div>
+            <div class="card__right" id="card-right">
+                <div class="card__username">
+                    <a th:text="${comment.author.nickname}" th:href="@{'/user/' + ${comment.author.username}}">
+                        AUTHOR
+                    </a>
+                </div>
+                <div th:text="${comment.content}" id="comment-content" class="card__comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate
+                    praesentium vitae fugiat ullam corporis tempore architecto
+                    saepe delectus eum iusto nisi hic suscipit?
+                </div>
+                <div th:text="${comment.date}" class="card__date">18.12.2023</div>
+            </div>
+        </div>
+        <div id="settings-div">
+            <div th:if="(${comment.author.username} == ${#authentication.name})
+                or ${isAdmin} or (${#authentication.name} == ${article.author.username})" id="delete-form">
+                <form th:action="@{'/delete/user/' + ${article.id} + '/' + ${comment.id}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">
+                <form th:action="@{'/edit/article/' + ${article.id} + '/' + ${comment.id}}" method="post">
+                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>
+                    <div style="display:flex">
+                        <div style="margin-right: 8px">
+                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>
+                        </div>
+                        <div>
+                            <button type="submit" id="submit-btn" style="display: none;">Update</button>
+                        </div>
+                    </div>
+                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"
+                              placeholder="Editing your comment..."
+                              cols="30" rows="5" style="display: none;"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="user-comments" th:each="comment : ${user.comments}" class="user__comments">
+    <div class="comment__card" style="display:flex; justify-content: space-between">
+        <div style="display:flex;">
+            <div class="card__left">
+                <a th:href="@{'/user/' + ${comment.author.username}}">
+                    <img th:src="@{/image/user_picture.jpg}" alt="User's prof. picture">
+                </a>
+            </div>
+            <div class="card__right" id="card-right">
+                <div class="card__username">
+                    <a th:text="${comment.author.nickname}" th:href="@{'/user/' + ${comment.author.username}}">
+                        AUTHOR
+                    </a>
+                </div>
+                <div th:text="${comment.content}" id="comment-content" class="card__comment">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate
+                    praesentium vitae fugiat ullam corporis tempore architecto
+                    saepe delectus eum iusto nisi hic suscipit?
+                </div>
+                <div th:text="${comment.date}" class="card__date">18.12.2023</div>
+            </div>
+        </div>
+        <div id="settings-div">
+            <div th:if="(${comment.author.username} == ${#authentication.name})
+                or ${isAdmin} or (${#authentication.name} == ${user.username})" id="delete-form">
+                <form th:action="@{'/delete/user/' + ${user.username} + '/' + ${comment.id}}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">
+                <form th:action="@{'/edit/user/' + ${user.username} + '/' + ${comment.id}}" method="post">
+                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>
+                    <div style="display:flex">
+                        <div style="margin-right: 8px">
+                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>
+                        </div>
+                        <div>
+                            <button type="submit" id="submit-btn" style="display: none;">Update</button>
+                        </div>
+                    </div>
+                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"
+                              placeholder="Editing your comment..."
+                              cols="30" rows="5" style="display: none;"></textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

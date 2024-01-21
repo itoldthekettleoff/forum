@@ -11,21 +11,13 @@
     font-size: 14px;
 }
 
-.table__tags a:hover {
-    color: rgba(144, 175, 255, .9);
-}
-
-.table__td a {
-    color: #171928;
-}
-
 .table__title {
     padding: 2px 0;
 }
 
 .table__title a,
 .table__author a{
-    color: #000;
+    color: #171928;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -37,7 +29,8 @@
 }
 
 .table__title a:hover,
-.table__author a:hover {
+.table__author a:hover,
+.table__tags a:hover {
     color: rgba(144, 175, 255, .9);
 }
 

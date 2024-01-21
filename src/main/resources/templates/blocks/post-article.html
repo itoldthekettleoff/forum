@@ -1,0 +1,31 @@
+<section th:fragment="postForm" class="post__article" id="postForm">
+    <div class="container">
+        <form th:action="@{/article/post}" method="post">
+            <div class="post__user">
+                <a th:href="@{'/user/' + ${username}}" th:text="'Posting as ' + ${username}">Posting as USERNAME</a>
+            </div>
+            <div class="post__title w100p">
+                <p>Title (max 255 chars)</p>
+                <input name="title" type="text" id="inputField" maxlength="255" required>
+            </div>
+            <div class="post__content w100p">
+                <p>Content</p>
+                <textarea name="text" id="post__content" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="post__image w100p">
+                <label for="images">Upload your images</label>
+                <input type="file" id="images" name="image" disabled>
+            </div>
+            <div class="post__tags w100p">
+                <!-- <p>Tags (add by clicking <b>space</b>)</p>-->
+                <p>Tags (separate the tags with <b>,</b>)</p>
+                <div class="tags__inner">
+                    <div id="tags-container"></div>
+                    <input name="tags" type="text" id="tag-input" placeholder="Add a tag">
+                </div>
+            </div>
+            <button id="public__article" type="submit">Public</button>
+        </form>
+        <div class="close__form" onclick="showDiv()"></div>
+    </div>
+</section>

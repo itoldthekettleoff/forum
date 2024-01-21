@@ -24,20 +24,14 @@ input[type="file"] {
   display: none;
 }
 
-a {
-    transition: 0.2s ease;
-    color: #fff; /* CHANGE TO BLACK COLOUR LTR! */
-    text-decoration: none;
-}
-
 .container {
     max-width: 900px;
     margin: 0 auto;
 }
 
 .active {
-    background-color: #fff;
-    color: #171928;
+    background-color: #fff !important;
+    color: #171928 !important;
 }
 
 .icon {
@@ -52,4 +46,5 @@ a {
 
 .btn-flat {
     width: 32px;
+    height: 32px;
 }

@@ -6,29 +6,37 @@
                      alt="forum logo">
             </a>
         </div>
-        <form id="logout-form" th:action="@{/logout}" method="post">
-            <button type="submit">Sign me Out!</button>
-        </form>
         <div class="panel">
-            <button aria-expanded="false" aria-haspopup="true" href="/search" data-auto-route="true" title="Search"
-                    aria-label="Search" id="search-button" class="icon btn-flat">
-                <img src="/image/search.png" alt="">
+            <button aria-haspopup="true" title="Search"
+                    id="search-button" class="icon btn-flat">
+                <img th:src="@{/image/search.png}" alt="search">
             </button>
 
-            <button aria-expanded="false" aria-haspopup="true" href="" data-auto-route="true" title="menu"
-                    aria-label="menu" id="toggle-hamburger-menu" class="icon btn-flat">
-                <img src="/image/burger-bar.png" alt="">
-            </button>
-
-            <button aria-haspopup="true" aria-expanded="false" href="/u/rathercruel" title="James"
-                    data-auto-route="true" class="icon btn-flat">
+            <button title="User" onclick="showMenu()"
+                    id="user-btn" class="icon btn-flat">
                 <div class="avatar__picture">
                     <img alt="profile" width="48" height="48"
-                         th:src="@{/image/user_picture.jpeg}"
-                         title="James" aria-hidden="true" loading="lazy" tabindex="-1" class="avatar">
+                         th:src="@{/image/user_picture.jpg}"
+                         title="user" class="profile picture">
+                </div>
+                <div class="menu" id="menuOptions">
+                    <div class="menu__link">
+                        <a th:href="@{'/user/' + ${#authentication.name}}">Profile</a>
+                    </div>
+                    <div class="menu__link">
+                        <a th:href="@{'/user/' + ${#authentication.name} + '/settings'}">Settings</a>
+                    </div>
+                    <div class="menu__link">
+                        <a th:href="@{/tech-support}">Tech Support</a>
+                    </div>
                 </div>
             </button>
+
+            <form id="logout-form" th:action="@{/logout}" method="post">
+                <button type="submit">
+                    <img th:src="@{/image/logout.png}" alt="logout">
+                </button>
+            </form>
         </div>
     </div>
-    <div class="header__right"></div>
 </header>

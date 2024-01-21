@@ -18,11 +18,11 @@
             <p>Such user already exists!</p>
         </div>
 
-        <form th:action="@{/registration}" method="post">
+        <form th:action="@{/registration}" method="post" id="regForm">
 
             <div class="login__username">
                 <div class="user-field">Username</div>
-                <input type="text" id="username" name="username" required maxlength="16" placeholder="Username (max 16chars)">
+                <input type="text" id="username" name="username" required maxlength="32" placeholder="Username">
             </div>
 
             <div class="login__email">
@@ -32,7 +32,12 @@
 
             <div class="login__password">
                 <div class="user-field">Password</div>
-                <input type="password" id="password" name="password" required maxlength="255" placeholder="Your password (max 16chars)">
+                <input type="password" id="password" name="password" required maxlength="255" placeholder="Your password">
+            </div>
+
+            <div class="login__password">
+                <div class="user-field">Confirm your password</div>
+                <input type="password" id="confirmPassword" required maxlength="255" placeholder="Type it one more time">
             </div>
 
             <button id="login-btn" type="submit">Register</button>
@@ -48,8 +53,8 @@
                 </div>
             </div>
         </form>
-
     </div>
 </div>
+<script th:src="@{/scripts/registration.js}"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "articles")
@@ -25,7 +26,7 @@ public class Article {
     private List<ArticleComment> articleComments;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "article_tags",
+    @JoinTable(name = "article_tags_junction",
             joinColumns = @JoinColumn(name = "article_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private Set<Tag> articleTags;
@@ -35,7 +36,7 @@ public class Article {
     @SequenceGenerator(
             name = "article_sequence",
             sequenceName = "article_sequence")
-    private Long id;
+    private UUID id;
 
     public Article() {
     }
@@ -50,7 +51,7 @@ public class Article {
         date = sdf.format(new Date());
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
