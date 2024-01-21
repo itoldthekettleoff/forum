@@ -14,5 +14,7 @@ public interface UserService extends UserDetailsService {
     UserDetails loadUserById(Long id) throws UsernameNotFoundException;
     UserDetails loadUserByEmail(String email) throws UsernameNotFoundException;
     Optional<User> findByUsername(String username);
+    User update(User user);
     boolean isPresent(String username);
+    boolean isPresentEmail(String username);
 }

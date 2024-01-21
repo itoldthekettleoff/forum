@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Forum -' + ${user.nickname}">Forum - Rolf</title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/post-article.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
+</head>
+<body>
+    <div class="container">
+        <div th:replace="~{blocks/header :: header}"/>
+        <div th:replace="~{blocks/navbar :: navbar}"/>
+
+        <div th:replace="~{blocks/post-article :: postForm}"/>
+        
+        <div class="main__block">
+            <h2 style="margin: 0 0 12px 0">Editing your profile</h2>
+           <div class="user__profile">
+               <div class="profile__left">
+                   <div class="user__picture">
+                       <img th:src="@{/image/user_picture.jpg}" alt="user profile picture">
+                   </div>
+                   <div class="profile__regdate" th:text="'Exists since: ' + ${user.date}">
+                       Exists since: 01.01.2024
+                   </div>
+               </div>
+                <div class="profile__right">
+                    <div class="user__info">
+                        <form th:action="@{'/user/' + ${user.username} + '/settings'}" id="profile-form" method="post">
+                            <div class="settings__title">Nickname update</div>
+                            <div class="settings__username default-input">
+                                <input type="text" name="nickname" th:placeholder="${user.nickname}" maxlength="16">
+                            </div>
+                            <div class="settings__title">Status update</div>
+                            <div class="settings__status default-input">
+                                <input type="text" name="status" th:placeholder="${user.status}" maxlength="90">
+                            </div>
+                            <div class="settings__title">Password update</div>
+                            <div class="settings__password default-input">
+                                <input type="password" id="password" name="password" placeholder="Enter your new password">
+                                <input type="password" id="confirm-password" placeholder="Confirm your new password">
+                            </div>
+                            <button type="submit">Update</button>
+                        </form>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+    <div th:replace="~{blocks/footer :: footer}"/>
+    <script th:src="@{/scripts/profileSettings.js}"></script>
+    <script th:src="@{/scripts/showForm.js}"></script>
+    <script th:src="@{/scripts/showMenu.js}"></script>
+</body>
+</html>

@@ -6,15 +6,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "tags")
 public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "articleTags")
+    @ManyToMany(mappedBy = "articleTags", fetch = FetchType.EAGER)
     private Set<Article> articles = new HashSet<>();
 
     public Tag() {
@@ -46,5 +48,14 @@ public class Tag {
 
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
+    }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", articles=" + articles +
+                '}';
     }
 }

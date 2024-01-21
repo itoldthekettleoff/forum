@@ -2,10 +2,13 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Forum -' + ${title}">Forum - Article</title>
+    <title th:text="'Forum - ' + ${article.title}">Forum - Article</title>
     <link rel="stylesheet" th:href="@{/css/reset.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <link rel="stylesheet" th:href="@{/css/post-article.css}">
     <link rel="stylesheet" th:href="@{/css/comments.css}">
+
     <link rel="stylesheet" th:href="@{/css/pagination.css}">
     <link rel="shortcut icon" type="x-icon" th:href="@{/image/site-logo.png}">
 </head>
@@ -15,23 +18,27 @@
     <div th:replace="~{blocks/header :: header}"/>
     <div th:replace="~{blocks/navbar :: navbar}"/>
 
+    <div th:replace="~{blocks/post-article :: postForm}"/>
+
     <div class="main__block">
         <div class="article__date">
-            <a th:text="${date}" th:href="@{'/articles/date/' + ${date_formatted}}">12.12.2023</a>
+            <a th:text="${article.date}" th:href="@{'/articles/date/' + ${date_formatted}}">12.12.2023</a>
         </div>
 
         <div class="page__title">
-            <h1 th:text="${title}">Article Title Lorem ipsum dolor ipsum.</h1>
+            <h1 th:text="${article.title}">Article Title Lorem ipsum dolor ipsum.</h1>
         </div>
 
         <div class="author">
-            <a th:href="@{'/user/' + ${author.id}}">
-                <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpeg}" class="avatar">
-                <div th:text="${author.username}"/>
+            <a th:href="@{'/user/' + ${article.author.username}}">
+                <div class="author__picture">
+                    <img alt="profile" width="24" height="24" th:src="@{/image/user_picture.jpg}" class="avatar">
+                </div>
+                <div th:text="${article.author.nickname}"/>
             </a>
         </div>
 
-        <div th:text="${text}" class="text">
+        <div th:text="${article.content}" class="text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             In ducimus a rem eveniet autem dolores animi eaque nihil
             voluptatum quidem fugit hic dolorem obcaecati temporibus
@@ -51,47 +58,25 @@
             </div>
         </div>
 
-        <div class="tags">
+        <div th:if="${!article.articleTags.empty}" class="tags">
             <div class="tag__title"><b>Tags</b></div>
             <div class="tags__inner">
-                <div th:each="tag : ${tags}" class="tag">
+                <div th:each="tag : ${article.articleTags}" class="tag">
                     <a th:href="@{'/articles/tag/' + ${tag.name}}" th:text="${tag.name}">Tag</a>
                 </div>
             </div>
         </div>
 
-        <form th:action="@{/article/comment-} + ${id}" method="post">
+        <form th:action="@{/article/} + ${id}" method="post">
             <div class="comment">
                 <textarea name="content" id="comment" rows="8" placeholder="Comment this article"></textarea>
             </div>
             <button type="submit">Comment</button>
         </form>
 
-        <div th:if="${!comments.empty}" th:each="comment : ${comments}" class="user__comments">
-            <div class="comment__card">
-                <div class="card__left">
-                    <div class="user__avatar">
-                        <a th:href="'/user/' + ${comment.author.id}">
-                            <img th:src="@{/image/user_picture.jpeg}" alt="User's prof. picture">
-                        </a>
-                    </div>
-                </div>
-                <div class="card__right">
-                    <div class="card__username">
-                        <a th:text="${comment.author.username}" th:href="'/user/' + ${comment.author.id}">
-                            TF U MEAN 'NUH UH'?
-                        </a>
-                    </div>
-                    <div th:text="${comment.content}" class="card__comment">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        Fugit consectetur, et sunt aut? Maxime, repudiandae voluptate
-                        praesentium vitae fugiat ullam corporis tempore architecto
-                        saepe delectus eum iusto nisi hic suscipit?
-                    </div>
-                    <div th:text="${comment.date}" class="card__date">18.12.2023</div>
-                </div>
-            </div>
-        </div>
+        <div th:if="${!article.articleComments.empty}" th:replace="~{blocks/comments :: article-comments}"/>
+        <div th:if="${article.articleComments.empty}" style="text-align: center;
+        font-size: 18px; color: grey; padding: 18px 0"><i>No comments here yet.</i></div>
     </div>
 
     <div class="table__pagination">
@@ -103,5 +88,8 @@
     </div>
 </div>
 <div th:replace="~{blocks/footer :: footer}"/>
+<script th:src="@{/scripts/commentEdit.js}"></script>
+<script th:src="@{/scripts/showForm.js}"></script>
+<script th:src="@{/scripts/showMenu.js}"></script>
 </body>
 </html>

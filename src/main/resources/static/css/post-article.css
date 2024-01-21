@@ -1,5 +1,36 @@
 .post__article {
-    width: 100%;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.post__article .container {
+    height: 100%;
+}
+
+.post__article form {
+    position: relative;
+    border-radius: 6px;
+    padding: 12px 8px;
+    background-color: #fff;
+    transform: translate(0, 32%);
+    z-index: 2;
+}
+
+.close__form {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+    height: 100%;
+    background-color: #00000075;
+    z-index: 1;
 }
 
 .post__user {
@@ -19,20 +50,6 @@
     width: 100%;
 }
 
-.post__title input,
-.post__title input:active,
-.post__title input:focus,
-.post__tags input,
-.post__tags input :active,
-.post__tags input:focus {
-  outline: 0;
-  width: 100%;
-  font-size: 16px;
-  padding: 8px;
-  border: 1px solid black;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
 .post__content,
 .post__tags {
   margin: 20px 0 16px;
@@ -47,7 +64,6 @@
 
 .tag {
     background-color: #ec1c24;
-    color: #fff;
     padding: 6px 10px;
     border-radius: 5px;
     cursor: pointer;

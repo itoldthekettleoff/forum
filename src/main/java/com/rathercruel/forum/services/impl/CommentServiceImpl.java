@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -28,15 +31,44 @@ public class CommentServiceImpl implements CommentService {
     private UserService userService;
 
     @Override
-    public void saveArticleComment(Long id, String content) {
+    public Optional<ArticleComment> findArticleCommentById(Long id) {
+        return articleCommentRepository.findById(id);
+    }
+
+    @Override
+    public Optional<UserComment> findUserCommentById(Long id) {
+        return userCommentRepository.findById(id);
+    }
+
+    @Override
+    public void saveArticleComment(UUID id, String content) {
         User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         articleCommentRepository.save(new ArticleComment(articleService.findById(id).get(), content, author));
     }
 
     @Override
-    public void saveUserComment(Long id, String content) {
-        User user = userService.findByUsername(userService.loadUserById(id).getUsername()).get();
+    public void saveUserComment(User user, String content) {
         User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userCommentRepository.save(new UserComment(user, content, author));
+    }
+
+    @Override
+    public void deleteArticleComment(Long id) {
+        articleCommentRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteUserComment(Long id) {
+        userCommentRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateArticleComment(ArticleComment comment) {
+        articleCommentRepository.save(comment);
+    }
+
+    @Override
+    public void updateUserComment(UserComment comment) {
+        userCommentRepository.save(comment);
     }
 }
