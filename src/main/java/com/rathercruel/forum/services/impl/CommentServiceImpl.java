@@ -1,13 +1,11 @@
 package com.rathercruel.forum.services.impl;
 
+import com.rathercruel.forum.dao.ArticleDAO;
+import com.rathercruel.forum.dao.DAO;
 import com.rathercruel.forum.models.ArticleComment;
 import com.rathercruel.forum.models.User;
 import com.rathercruel.forum.models.UserComment;
-import com.rathercruel.forum.repositories.ArticleCommentRepository;
-import com.rathercruel.forum.repositories.UserCommentRepository;
-import com.rathercruel.forum.services.ArticleService;
 import com.rathercruel.forum.services.CommentService;
-import com.rathercruel.forum.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -19,56 +17,53 @@ import java.util.UUID;
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
-    private ArticleCommentRepository articleCommentRepository;
+    private DAO<ArticleComment> articleCommentDAO;
 
     @Autowired
-    private UserCommentRepository userCommentRepository;
+    private DAO<UserComment> userCommentDAO;
 
     @Autowired
-    private ArticleService articleService;
-
-    @Autowired
-    private UserService userService;
+    private ArticleDAO articleDAO;
 
     @Override
     public Optional<ArticleComment> findArticleCommentById(Long id) {
-        return articleCommentRepository.findById(id);
+        return articleCommentDAO.get(id);
     }
 
     @Override
     public Optional<UserComment> findUserCommentById(Long id) {
-        return userCommentRepository.findById(id);
+        return userCommentDAO.get(id);
     }
 
     @Override
     public void saveArticleComment(UUID id, String content) {
         User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        articleCommentRepository.save(new ArticleComment(articleService.findById(id).get(), content, author));
+        articleCommentDAO.save(new ArticleComment(articleDAO.get(id).get(), content, author));
     }
 
     @Override
     public void saveUserComment(User user, String content) {
         User author = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        userCommentRepository.save(new UserComment(user, content, author));
+        userCommentDAO.save(new UserComment(user, content, author));
     }
 
     @Override
     public void deleteArticleComment(Long id) {
-        articleCommentRepository.deleteById(id);
+        articleCommentDAO.delete(articleCommentDAO.get(id).get());
     }
 
     @Override
     public void deleteUserComment(Long id) {
-        userCommentRepository.deleteById(id);
+        userCommentDAO.delete(userCommentDAO.get(id).get());
     }
 
     @Override
     public void updateArticleComment(ArticleComment comment) {
-        articleCommentRepository.save(comment);
+        articleCommentDAO.save(comment);
     }
 
     @Override
     public void updateUserComment(UserComment comment) {
-        userCommentRepository.save(comment);
+        userCommentDAO.save(comment);
     }
 }

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, UUID> {
-    List<Article> findByDate(String date);
+    List<Article> findAllByDate(String date);
     List<Article> findAllByAuthor(User author);
-//    List<Article> findAllByTag(Tag tag);
+    List<Article> findAllByArticleTags(Tag tag);
 }

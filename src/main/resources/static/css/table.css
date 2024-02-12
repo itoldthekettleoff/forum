@@ -28,9 +28,7 @@
     font-size: 14px;
 }
 
-.table__title a:hover,
-.table__author a:hover,
-.table__tags a:hover {
+table tbody tr td a:hover {
     color: rgba(144, 175, 255, .9);
 }
 

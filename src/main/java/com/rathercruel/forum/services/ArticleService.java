@@ -6,10 +6,13 @@ import com.rathercruel.forum.models.User;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public interface ArticleService {
-    Article insert(Article article);
+    Article add(Article article);
+    Article addByStrings(Set<Tag> articleTags, String title, User user, String text);
+    void delete(Article article);
     List<Article> findAll();
     List<Article> findAllByAuthor(User author);
     Optional<Article> findById(UUID id);

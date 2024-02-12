@@ -15,7 +15,7 @@ public interface CommentService {
     void saveArticleComment(UUID id, String content);
     void saveUserComment(User user, String content);
     void deleteArticleComment(Long id);
-    void updateArticleComment(ArticleComment comment);
     void deleteUserComment(Long id);
+    void updateArticleComment(ArticleComment comment);
     void updateUserComment(UserComment comment);
 }

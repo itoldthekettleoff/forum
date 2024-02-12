@@ -15,6 +15,7 @@ public interface UserService extends UserDetailsService {
     UserDetails loadUserByEmail(String email) throws UsernameNotFoundException;
     Optional<User> findByUsername(String username);
     User update(User user);
+    User updateSettings(String username, String nickname, String status, String password);
     boolean isPresent(String username);
     boolean isPresentEmail(String username);
 }

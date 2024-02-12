@@ -21,30 +21,30 @@
                 <div th:text="${comment.date}" class="card__date">18.12.2023</div>
             </div>
         </div>
-        <div id="settings-div">
-            <div th:if="(${comment.author.username} == ${#authentication.name})
-                or ${isAdmin} or (${#authentication.name} == ${article.author.username})" id="delete-form">
-                <form th:action="@{'/delete/user/' + ${article.id} + '/' + ${comment.id}}" method="post">
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
-            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">
-                <form th:action="@{'/edit/article/' + ${article.id} + '/' + ${comment.id}}" method="post">
-                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>
-                    <div style="display:flex">
-                        <div style="margin-right: 8px">
-                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>
-                        </div>
-                        <div>
-                            <button type="submit" id="submit-btn" style="display: none;">Update</button>
-                        </div>
-                    </div>
-                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"
-                              placeholder="Editing your comment..."
-                              cols="30" rows="5" style="display: none;"></textarea>
-                </form>
-            </div>
-        </div>
+<!--        <div id="settings-div">-->
+<!--            <div th:if="(${comment.author.username} == ${#authentication.name})-->
+<!--                or ${isAdmin} or (${#authentication.name} == ${article.author.username})" id="delete-form">-->
+<!--                <form th:action="@{'/delete/user/' + ${article.id} + '/' + ${comment.id}}" method="post">-->
+<!--                    <button type="submit">Delete</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">-->
+<!--                <form th:action="@{'/edit/article/' + ${article.id} + '/' + ${comment.id}}" method="post">-->
+<!--                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>-->
+<!--                    <div style="display:flex">-->
+<!--                        <div style="margin-right: 8px">-->
+<!--                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <button type="submit" id="submit-btn" style="display: none;">Update</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"-->
+<!--                              placeholder="Editing your comment..."-->
+<!--                              cols="30" rows="5" style="display: none;"></textarea>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 
@@ -71,29 +71,29 @@
                 <div th:text="${comment.date}" class="card__date">18.12.2023</div>
             </div>
         </div>
-        <div id="settings-div">
-            <div th:if="(${comment.author.username} == ${#authentication.name})
-                or ${isAdmin} or (${#authentication.name} == ${user.username})" id="delete-form">
-                <form th:action="@{'/delete/user/' + ${user.username} + '/' + ${comment.id}}" method="post">
-                    <button type="submit">Delete</button>
-                </form>
-            </div>
-            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">
-                <form th:action="@{'/edit/user/' + ${user.username} + '/' + ${comment.id}}" method="post">
-                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>
-                    <div style="display:flex">
-                        <div style="margin-right: 8px">
-                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>
-                        </div>
-                        <div>
-                            <button type="submit" id="submit-btn" style="display: none;">Update</button>
-                        </div>
-                    </div>
-                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"
-                              placeholder="Editing your comment..."
-                              cols="30" rows="5" style="display: none;"></textarea>
-                </form>
-            </div>
-        </div>
+<!--        <div id="settings-div">-->
+<!--            <div th:if="(${comment.author.username} == ${#authentication.name})-->
+<!--                or ${isAdmin} or (${#authentication.name} == ${user.username})" id="delete-form">-->
+<!--                <form th:action="@{'/delete/user/' + ${user.username} + '/' + ${comment.id}}" method="post">-->
+<!--                    <button type="submit">Delete</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div th:if="${isAdmin} or (${comment.author.username} == ${#authentication.name})">-->
+<!--                <form th:action="@{'/edit/user/' + ${user.username} + '/' + ${comment.id}}" method="post">-->
+<!--                    <button type="button" id="edit-btn" onclick="edit()" style="display: block;">Edit</button>-->
+<!--                    <div style="display:flex">-->
+<!--                        <div style="margin-right: 8px">-->
+<!--                            <button type="button" id="discard-btn" onclick="cancel()" style="display: none;">Discard</button>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                            <button type="submit" id="submit-btn" style="display: none;">Update</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <textarea name="changed_content" th:text="${comment.content}" id="content-change"-->
+<!--                              placeholder="Editing your comment..."-->
+<!--                              cols="30" rows="5" style="display: none;"></textarea>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>

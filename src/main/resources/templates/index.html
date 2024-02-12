@@ -61,7 +61,10 @@
                         </div>
                     </td>
                     <td th:text="${article.views}">5.4K</td>
-                    <td th:text="${article.date}">04.11.2023</td>
+                    <td>
+                        <a th:href="@{'/articles/date/' + ${#strings.replace(article.date, '.', '-')}}"
+                           th:text="${article.date}">04.11.2023</a>
+                    </td>
                 </tr>
                 <tr th:if="${articles.empty}">
                     <td>

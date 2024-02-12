@@ -17,7 +17,9 @@
         <section class="post__article">
             <form th:action="@{/article/post}" method="post">
                 <div class="post__user">
-                    <a th:href="@{${user_url}}" th:text="'Posting as ' + ${username}">Posting as USERNAME</a>
+                    <a th:href="@{'/user/' + ${user.username}}" th:text="'Posting as ' + ${user.nickname}">
+                        Posting as NICKNAME
+                    </a>
                 </div>
                 <div class="post__title default-input w100p">
                     <p>Title (max 255 chars)</p>

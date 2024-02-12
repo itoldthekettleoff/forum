@@ -1,9 +1,9 @@
 package com.rathercruel.forum.services.impl;
 
+import com.rathercruel.forum.dao.RoleDAO;
+import com.rathercruel.forum.dao.UserDAO;
 import com.rathercruel.forum.models.Role;
 import com.rathercruel.forum.models.User;
-import com.rathercruel.forum.repositories.RoleRepository;
-import com.rathercruel.forum.repositories.UserRepository;
 import com.rathercruel.forum.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,24 +17,24 @@ import java.util.Set;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDAO userDAO;
 
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleDAO roleDAO;
 
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
     public void registerUser(String username, String email, String password) {
-        if (!roleRepository.findByAuthority("USER").isPresent()) {
-            roleRepository.save(new Role("USER"));
+        if (!roleDAO.getByAuthority("USER").isPresent()) {
+            roleDAO.save(new Role("USER"));
         }
 
         String encodedPassword = encoder.encode(password);
-        Role userRole = roleRepository.findByAuthority("USER").get();
+        Role userRole = roleDAO.getByAuthority("USER").get();
         Set<Role> authorities = new HashSet<>();
         authorities.add(userRole);
-        userRepository.save(new User(username, email, encodedPassword, authorities, new ArrayList<>()));
+        userDAO.save(new User(username, email, encodedPassword, authorities, new ArrayList<>()));
     }
 }
